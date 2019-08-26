@@ -1,3 +1,940 @@
+<!-- Large desktop banner. Must be used with "Large banner limit and switch" mixin -->
 
- <!-- CREATED AT: 2019-08-26T20:22:44+00:00 -->
+ <!-- CREATED AT: 2019-08-26T20:28:51+00:00 -->
 
+<style>
+/* Hide when editing */
+.action-edit #centralNotice,
+.ve-activated #centralNotice {
+    display: none !important;
+}
+
+/* Border-Box */
+
+.frb *,
+.frb *:before,
+.frb *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* Banner wide settings */
+
+.frb button {
+    cursor: pointer;
+    outline: 0;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* --- Main banner wrapper --- */
+
+#siteNotice {
+    z-index: 2;
+}
+
+.frb {
+    display: none;
+    top: -11px;
+    right: 0;
+    z-index: 110;
+    background: transparent;
+    margin-bottom: 40px;
+    background-color: #fff;
+    text-align: left;
+    color: #000;
+    font-size: 16px;
+    line-height: 1.1875; /*19px @16px*/
+    font-family: system-ui, -apple-system,BlinkMacSystemFont, "Segoe UI", Roboto, "Oxygen-Sans", Ubuntu, Cantarell, Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-style: normal; /* needed for uk.wikipedia */
+
+    padding: 0;
+    box-shadow: 0 12px 44px 0 rgba(0, 0, 0, 0.17);
+    overflow: hidden;
+}
+
+.frb--minimized,
+.frb--fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: calc(100% - 16px);
+    padding: 0 16px;
+    background-color: #fff;
+    border-bottom: 1px solid #c8ccd1;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.frb--in-article {
+    position: relative;
+    top: 0;
+    width: calc(100% + 11px);
+}
+
+/* --- Window Styles --- */
+
+.frb-main {
+    position: relative;
+    display: table;
+    width: 100%;
+    padding: 0;
+    background-color: #FFFFFF;
+    transition: background-color 0.5s ease;
+    padding: 24px;
+}
+
+body.rtl .frb-main {
+    padding: 16px 8px 16px 0;
+}
+
+/* --- Close button --- */
+
+.frb-close {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 999;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 0;
+}
+body.rtl .frb-close {
+    right: auto;
+    left: 0;
+}
+
+.frb--in-article .frb-close {
+    top: 24px;
+    right: 24px;
+}
+
+
+.frb--minimized .frb-close,
+.frb--fixed .frb-close {
+    top: 20px;
+    right: 20px;
+}
+
+.frb-close:hover .frb-icon g {
+    stroke: #000000;
+}
+
+.frb-icon-close {
+    width: 20px;
+    height: 20px;
+}
+
+
+/* -------------- Message -------------- */
+
+.frb-message {
+    display: table-cell;
+    width: auto;
+    vertical-align: top;
+    font-weight: normal;
+    color: #000;
+    font-size: 15px;
+    transition: background-color 0.5s ease;
+}
+
+.frb-highlight {
+    border-bottom: 3px solid #fc5e5e;
+    padding-bottom: 2px;
+}
+
+@media (min-width: 1100px) {
+    .frb-message {
+        font-size: 18px;
+    }
+    html[lang="en"] .frb-message { font-size: 19px; }
+}
+
+@media (min-width: 1300px) {
+    .frb-message { font-size: 20px; }
+    html[lang="en"] .frb-message { font-size: 21px; }
+}
+
+@media (min-width: 1500px) {
+    .frb-message { font-size: 21px; }
+    html[lang="en"] .frb-message { font-size: 22px; }
+}
+
+@media (min-width: 1700px) {
+    .frb-message { font-size: 22px; }
+    html[lang="en"] .frb-message { font-size: 23px; }
+}
+
+
+.frb-message p {
+    line-height: 1.5;
+    margin: 0;
+}
+
+
+.frb--minimized .frb-message {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.frb-message-inner {
+    z-index: 1;
+}
+
+
+/* --- Common Button Styles --- */
+
+
+.frb button:focus,
+.frb-close:focus {
+    outline: 0;
+    border-color: #36c !important;
+    box-shadow: inset 0 0 0 2px #36c;
+}
+
+
+
+/* --- Payment method Buttons --- */
+
+
+/* --- Footer / Small Print --- */
+.frb-footer {
+    padding-top: 10px;
+    font-size: 12px;
+    line-height:  1.3333333333; /*16px @12px*/
+    color: #555;
+    font-weight: normal;
+}
+
+/* Minimized styles */
+.frb--minimized .frb-footer {
+    display: none !important;
+}
+
+/* --- Show and Hiding (Minimize and Maximize) --- */
+
+/*Minimized styles*/
+
+/* Messages */
+.frb-message__minimized {
+    display: none;
+}
+.frb-message__maximized {
+    display: block;
+}
+.frb-greeting {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+/* Minimized styles */
+.frb--minimized .frb-message__minimized {
+    display: block;
+    text-align: left;
+}
+.frb--minimized .frb-message__maximized {
+    display: none;
+}
+.frb-prevent-page-jump {
+    display: none;
+}
+
+
+/*
+    Colored style
+*/
+.frb-message {
+    display: table;
+}
+.frb-message__left {
+    display: table-cell;
+    /* min-width: 930px; */
+}
+.frb-message__title {
+    font-family: Georgia;
+    font-size: 34px;
+    color: #222222; 
+    padding-left: 24px;
+}
+.frb-message__title--you {
+    color: #545dd8;
+    position: relative;
+}
+.frb-message__title--wikipedia {
+    color: #fc5e5e;
+}
+.frb-message__text {
+
+    padding: 24px;
+    background: #F5F6FA;
+}
+.frb-message__p {
+    font-family: Arial;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #222222;
+}
+.frb-message__buttons {
+    margin-top: 24px;
+}
+.frb-button {
+    font-family: Arial;
+    font-size: 14px;
+}
+
+.frb-button--icon {
+    margin-left: 12.5px;
+    vertical-align: middle;
+}
+.frb-button--filled {
+    color: white;
+    border-radius: 3px;
+    border: solid 1px #2d59b3;
+    background-color: #3366cc;
+    padding: 10px 22px;
+    font-weight: bold;
+    transition: background-color 0.5s ease;
+    display: inline-block;
+}
+.frb-button--filled:active,
+.frb-button--filled:visited {
+    color: white;
+}
+
+.frb-button--filled:hover {
+    background-color: #447ff5;
+}
+
+.frb-button--filled:hover,
+.frb-button--filled:focus {
+    text-decoration: none;
+}
+.frb-button__span {
+    vertical-align: middle;
+}
+
+.frb-button--blank {
+    color: #0645ad;
+    margin-left: 24px;
+}
+.frb-button--blank:active,
+.frb-button--blank:visited {
+    color: #0645ad;
+}
+.frb-message__right {
+    display: table-cell;
+    width: 425px;
+    padding-left: 28px;
+    padding-right: 35px;
+    vertical-align: middle;
+    text-align: right;
+}
+.frb-message__right-img {
+    display: inline-block;
+    position: absolute;
+    vertical-align: middle;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 40px;
+    width: 345px;
+}
+.frb-footer {
+    opacity: 0.8;
+    margin-top: 16px;
+    padding-left: 16px;
+    position: relative;
+}
+.frb-footer:hover {
+    opacity: 1;
+}
+.frb-message__bottom-left-ornament {
+    position: absolute;
+    bottom: -20px;
+    left: -7px;
+    width: 85px;
+}
+.frb-message__bottom-right-ornament {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 186px;
+}
+.frb-message__title--you-ornament {
+    position: absolute;
+    bottom: -2px;
+    left: 10px;
+    width: 50px;
+}
+
+
+/* New Minimized */
+.frb--minimized  {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.frb--minimized .frb-main {
+    min-height: 146px;
+    padding: 0;
+}
+.frb--minimized .frb-close {
+    top: 20px;
+    right: 20px;
+}
+.frb--minimized .frb-message__left {
+    padding: 24px;
+    padding-left: 184px;
+    vertical-align: middle;
+    /*max-width: 1025px;*/
+}
+.frb--minimized .frb-message__title {
+    padding-left: 0;
+    line-height: 1.2;
+}
+.frb--minimized .frb-message__text {
+    margin-top: 0;
+    padding: 0;
+    background: none;
+}
+.frb--minimized .frb-message__buttons {
+    text-align: left;
+    margin-top: 24px;
+}
+.frb--minimized .frb-message__right {
+    height: 100%;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 188px;
+}
+.frb--minimized .frb-message__right-img {
+    width: auto;
+    height: 100%;
+}
+.frb--minimized .frb-message__bottom-left-ornament {
+    width: 85px;
+    bottom: 0;
+    left: -16px;
+}
+.frb--minimized .frb-message__bottom-right-ornament {
+    width: 112px;
+}
+
+.frb--in-article .frb-message__container {
+    margin-top: 24px;
+}
+
+/* Responsive for minimized */
+@media (max-width: 1400px) and (max-height: 800px) {
+    .frb-message, .frb-message__p { font-size: 15px; }
+    html[lang="en"] .frb-message, .frb-message__p { font-size: 15px; }
+}
+
+@media (max-width: 1280px) {
+    .frb--in-article .frb-message__title {
+        font-size: 28px;
+    }
+    .frb--in-article .frb-message__right {
+        width: 280px;
+    }
+    .frb--in-article .frb-message__title--you-ornament {
+        width: 35px;
+    }
+    .frb--in-article .frb-message__bottom-right-ornament {
+        width: 160px;
+    }
+    .frb--in-article .frb-message__right-img {
+        width: 280px;
+        right: 10px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .frb--in-article .frb-message__title {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 1050px) {
+    .frb--in-article .frb-message__right {
+        width: 230px;
+        padding-left: 10px;
+    }
+    .frb--in-article .frb-message__right-img {
+        width: 230px;
+        right: 0;
+    }
+}
+
+
+
+@media (max-width: 1483px) {
+    .frb--minimized .frb-message__right {
+        right: 105px;
+    }
+
+}
+
+@media (max-width: 1400px) {
+    .frb--minimized .frb-message__left {
+        max-width: 1000px;
+    }
+    .frb--minimized .frb-message__title { /* responsive based on font size title*/
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 1400px) and (max-height: 800px) {
+    .frb--in-article .frb-main {
+        padding: 20px;
+    }
+    .frb--in-article .frb-close {
+        top: 20px;
+        right: 20px;
+    }
+    .frb--in-article .frb-message__container {
+        margin-top: 10px;
+    }
+    .frb--in-article .frb-message__title {
+        font-size: 23px;
+    }
+    .frb--in-article .frb-message__title--you-ornament {
+        width: 30px;
+    }
+    .frb--in-article .frb-message__right {
+        width: 260px;
+        padding-right: 0;
+    }
+    .frb--in-article .frb-message__right-img {
+        width: 260px;
+        right: 10px;
+    }
+    .frb--in-article .frb-message__text {
+
+        padding: 20px;
+    }
+    .frb--in-article .frb-message__p {
+        line-height: 1.333 !important;
+    }
+    .frb--in-article .frb-footer {
+        margin-top: 8px;
+    }
+    .frb--in-article .frb-message__bottom-left-ornament {
+        width: 55px;
+        bottom: -15px;
+        left: -4px;
+    }
+    .frb--in-article .frb-message__bottom-right-ornament {
+        width: 92px;
+    }
+}
+
+@media (max-width: 1050px) and (max-height: 800px) {
+    .frb--in-article .frb-message__right {
+        width: 230px;
+        padding-left: 10px;
+    }
+    .frb--in-article .frb-message__right-img {
+        width: 230px;
+        right: 0;
+    }
+}
+
+@media (max-width: 970px) {
+    .frb--in-article .frb-message__title{
+        width: 75%;
+    }
+}
+
+
+/* Responsive minimized */
+@media (max-width: 1270px) {
+    .frb--minimized .frb-message__left {
+        /* max-width: 730px; responsive without decrease font size */
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .frb--minimized .frb-message__title { /* responsive based on font size title*/
+        font-size:25px;
+    }
+    .frb--minimized .frb-message__title--you-ornament {
+        width: 30px;
+    }
+    .frb--minimized .frb-main {
+        min-height: unset;
+        height: auto;
+    }
+    .frb--minimized .frb-message__right {
+        width: 175px;
+    }
+    .frb--minimized .frb-message__bottom-left-ornament {
+        width: 65px;
+    }
+    .frb--minimized .frb-message__buttons {
+        margin-top: 18px;
+    }
+    .frb--minimized .frb-close {
+        top: 15px;
+        right: 15px;
+    }
+
+}
+
+@media (max-width: 1162px) {
+    .frb--minimized .frb-message__title {
+        font-size: 23px;
+    }
+    .frb--minimized .frb-message__left {
+        max-width: initial;
+        width: auto;
+    }
+    .frb--minimized .frb-message__right {
+        width: 170px;
+        position: relative;
+        right: unset;
+        top: unset;
+        vertical-align: bottom;
+    }
+    .frb--minimized .frb-message__right-img {
+        height: auto;
+        width: 100%;
+    }
+}
+
+@media (max-width: 1100px) {
+    .frb--minimized .frb-message__right {
+        width: 120px;
+    }
+}
+
+@media (max-width: 1050px) {
+    .frb--minimized .frb-message__bottom-right-ornament{
+        right: -45px;
+    }
+}
+
+@media (max-width: 981px) {
+    .frb--minimized .frb-message__left {
+        padding-left: 161px;
+    }
+}
+
+
+/* Module: Viewport height */
+/* Module: Viewport height on: Wed Jul 24 2019 08:52:17 GMT-0500 (Central Daylight Time)*/
+
+
+@media (max-width: 1400px) and (max-height: 800px) {
+    .frb-footer {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 1400px) and (max-height: 800px) {
+    .frb {
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 1400px) and (max-height: 800px) {
+    .frb-message { font-size: 15px; }
+    html[lang="en"] .frb-message { font-size: 15px; }
+}
+/* Module: Viewport height */
+    
+
+
+
+/* Module: Viewport height on: Mon Aug 26 2019 20:28:51 GMT+0000 (UTC)*/
+@media (max-width: 1400px) and (max-height: 800px) {
+    .frb-form .frb-methods {
+        margin-top: 5px;
+    }
+}
+
+@media (max-width: 1400px) and (max-height: 800px) {
+    .frb-footer {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 1400px) and (max-height: 800px) {
+    button.frb-submit {
+        height: 45px;
+    }
+}
+
+@media (max-width: 1400px) and (max-height: 800px) {
+    .frb-label {
+        height: 45px;
+    }
+}
+
+@media (max-width: 1400px) and (max-height: 800px) {
+    .frb {
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 1400px) and (max-height: 800px) {
+    .frb-message { font-size: 15px; }
+    html[lang="en"] .frb-message { font-size: 15px; }
+}
+/* Module: Viewport height */
+    
+
+</style>
+
+<div class="frb-prevent-page-jump"></div>
+
+<div class="frb frb--in-article" id="{{{banner}}}" style="display: none;"><!-- hidden by default until have checked the cookies -->
+
+    <div class="frb-main">
+
+        <div class="frb-close" tabindex="0">
+            <svg class="frb-icon frb-icon-close" width="11" height="11" viewBox="0 0 11 11" xmlns="http://www.w3.org/2000/svg"><title>{{int:Centralnotice-close-title}}</title><g stroke="#72777d" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M2 3l7 7M9 3l-7 7"></path></g></svg>
+        </div>
+
+        <div class="frb-message">
+            <div class="frb-message-inner">
+
+                <!-- Maximized -->
+                <div class="frb-message__maximized">
+                    <img class="frb-message__bottom-left-ornament" src="https://upload.wikimedia.org/wikipedia/donate/d/dd/Frb-bottom-left-ornament.jpg">
+                    <img class="frb-message__bottom-right-ornament" src="https://upload.wikimedia.org/wikipedia/donate/5/5c/Frb-bottom-right-ornament.jpg">
+                    
+                    
+
+                    <div class="frb-message__title">Readers like <span class="frb-message__title--you">you <img class="frb-message__title--you-ornament" src="https://upload.wikimedia.org/wikipedia/donate/c/c1/Frb-stripe-ornament.jpg"></span> keep <span class="frb-message__title--wikipedia">Wikipedia</span> alive with your donations.</div>
+
+                    <div class="frb-message__container">
+                        <div class="frb-message__left">
+                            <div class="frb-message__text">
+                                <p class="frb-message__p frb-message__maximized">
+                                    It's a little awkward, so we'll get straight to the point: This <span class="frb-replace-dayofweek"></span> we humbly ask you to defend Wikipedia's independence. We depend on donations averaging about %AVERAGE%, but 99% of our readers don't give. <span class="frb-highlight">If everyone reading this gave %MINIMUM%, we could keep Wikipedia thriving for years to come.</span> The price of your <span class="frb-replace-dayofweek"></span> coffee is all we need. We know that most people will ignore this message. But if Wikipedia is useful to you, please take a minute to help keep it growing. Thank you.
+                                </p>
+                                <div class="frb-message__buttons">
+                                    <a class="frb-button frb-button--filled frb-button__icanhelp" href="#">
+                                        <span class="frb-button__span">I can help with %MINIMUM% <span class="frb-replace-currencycode"></span></span>
+                                        <svg class="frb-button--icon" xmlns="http://www.w3.org/2000/svg" width="18" height="13" viewBox="0 0 18 13">
+                                            <path fill="#FFF" fill-rule="nonzero" d="M17.758 6.746l-5.36-5.68a1.035 1.035 0 0 0-.981-.308c-.36.078-.648.34-.756.686a.984.984 0 0 0 .237.982l3.135 3.32H1.301a1.019 1.019 0 0 0-.895.496.974.974 0 0 0 0 1.008c.185.313.526.502.895.496h12.732l-3.135 3.32a.984.984 0 0 0-.237.983c.108.346.397.608.756.686.36.078.735-.041.98-.309l5.361-5.68z"></path>
+                                        </svg>
+
+                                    </a>
+                                    <a class="frb-button frb-button--blank frb-button__donatedifferent" href="#">
+                                        Donate a different amount
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="frb-footer">
+                                {{MediaWiki:FundraisingBanners/SmallPrint-2017}}
+                            </div>
+                        </div>
+                        <div class="frb-message__right">
+                            <img class="frb-message__right-img" src="https://upload.wikimedia.org/wikipedia/donate/1/11/Frb-donate-animation.gif">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Minimized -->
+                <div class="frb-message__minimized">
+                    <img class="frb-message__bottom-left-ornament" src="https://upload.wikimedia.org/wikipedia/donate/d/dd/Frb-bottom-left-ornament.jpg">
+                    <img class="frb-message__bottom-right-ornament" src="https://upload.wikimedia.org/wikipedia/donate/5/5c/Frb-bottom-right-ornament.jpg">
+                    
+                    <div class="frb-message__container">
+                        <div class="frb-message__left">
+                            <div class="frb-message__title">Readers like <span class="frb-message__title--you">you <img class="frb-message__title--you-ornament" src="https://upload.wikimedia.org/wikipedia/donate/c/c1/Frb-stripe-ornament.jpg"></span> keep <span class="frb-message__title--wikipedia">Wikipedia</span> alive with your donations.</div>
+                            <div class="frb-message__text">
+                                <div class="frb-message__buttons">
+                                    <a class="frb-button frb-button--filled frb-button__icanhelp" href="#">
+                                        <span class="frb-button__span">I can help with %MINIMUM% <span class="frb-replace-currencycode"></span></span>
+                                        <svg class="frb-button--icon" xmlns="http://www.w3.org/2000/svg" width="18" height="13" viewBox="0 0 18 13">
+                                            <path fill="#FFF" fill-rule="nonzero" d="M17.758 6.746l-5.36-5.68a1.035 1.035 0 0 0-.981-.308c-.36.078-.648.34-.756.686a.984.984 0 0 0 .237.982l3.135 3.32H1.301a1.019 1.019 0 0 0-.895.496.974.974 0 0 0 0 1.008c.185.313.526.502.895.496h12.732l-3.135 3.32a.984.984 0 0 0-.237.983c.108.346.397.608.756.686.36.078.735-.041.98-.309l5.361-5.68z"></path>
+                                        </svg>
+
+                                    </a>
+                                    <a class="frb-button frb-button--blank frb-button__donatedifferent" href="#">
+                                        Donate a different amount
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="frb-message__right">
+                            <img class="frb-message__right-img" src="https://upload.wikimedia.org/wikipedia/donate/1/11/Frb-donate-animation.gif">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--frb-message -->
+    </div><!--frb-main-->
+</div>
+
+<script>
+
+    // // // {# 'viewportHeight' #}
+    
+var frb = frb || {};
+
+frb.show = function() {
+    $('#siteNotice').prepend($('#centralNotice'));
+    $('.frb').css('display', 'block');
+    $('.frb').css('height', $('.frb').height );
+};
+
+frb.hide = function() {
+    /* Hide the banner, and remove the extra space which was added for it */
+    /* Don't set a cookie: this is a large banner and only shown on first view anyway */
+    $('.frb').hide();
+};
+
+
+{{MediaWiki:FundraisingBanners/LocalizeData-2017.js}}
+{{MediaWiki:FundraisingBanners/CoreJS-2018.js}}
+{{MediaWiki:FundraisingBanners/LocalizeJS-2017.js}}
+
+{{MediaWiki:FR2014/Resources/alterImpressionData.js}}
+
+$(function() {
+
+    var language = mw.centralNotice.data.uselang;
+    var country  = mw.centralNotice.data.country;
+    var currency = frb.getCurrency(country);
+    var validAmount;
+    var validMethod;
+
+    frb.localizeAmountOptions( frb.amounts.options7, currency, country, language, true );
+    frb.localizeErrors();
+
+    frb.storedOptions = {};
+    frb.extraData = {};
+
+    // Hide Banner when on click and enter when focused
+    $('.frb-close').on('click keypress', function(e){
+        if (e.which === 13 || e.type === 'click') {
+            frb.hide();
+            e.stopPropagation();
+        }
+    });
+
+
+    // On Load
+    var onLoad = true;
+    var bannerOuterHeight = $('.frb').outerHeight( true );
+    var stickyHeaderTop = bannerOuterHeight + $('.frb').offset().top + 200;
+     
+    // When the user press enter in url bar because without this, the title of the section will be hidden
+
+    /* --- Nag/minimized banner functionality --- */
+    if (window.location.hash) {
+
+        var agent = navigator.userAgent;
+
+        setTimeout(function() {
+            $('.frb-prevent-page-jump').css({
+                'height' : bannerOuterHeight + 'px',
+                'display': 'block'
+            });
+        }, 150);
+
+        var hash = decodeURI(window.location.hash).replace('#','');
+        hash = $("[id='"+hash+"']");
+
+        var offsetTop = hash.offset().top - 120;
+
+        offsetTop = (agent.indexOf('Chrome') > -1 || agent.indexOf('Firefox') > -1 || agent.indexOf('MSIE') > -1) ? offsetTop : offsetTop + bannerOuterHeight;
+        offsetTop = (agent.indexOf('Edge') > -1) ? offsetTop + bannerOuterHeight : offsetTop;
+
+        $('body, html').animate({ scrollTop: offsetTop}, 100, function() {
+            onLoad = false;
+        });
+    } else {
+        onLoad = false;
+    }
+
+
+    $(window).on('resize', function() {
+        bannerOuterHeight = $('.frb').outerHeight( true );
+        stickyHeaderTop = bannerOuterHeight + $('.frb').offset().top + 200;
+    });
+
+    function minimizeScrollFunction() {
+
+        if( $(window).scrollTop() > stickyHeaderTop ) {
+            
+            $('.frb-prevent-page-jump').css({
+                'height'  : bannerOuterHeight + 'px'
+            });
+
+            if (!onLoad) {
+                $('.frb-prevent-page-jump').show();
+            }
+
+            $('.frb').addClass('frb--minimized');
+            $('.frb').removeClass('frb--in-article');
+        } else {
+            $('.frb').addClass('frb--in-article');
+            $('.frb-prevent-page-jump').css('display', 'none');
+            $('.frb').removeClass('frb--minimized frb-rml-displayed');
+        }
+    }
+
+    var scrollPos;
+    frb.clicked = false;
+
+    $(window).on('load scroll resize', function() {
+        scrollPos = $(window).scrollTop();
+
+        // Keep frb minimized until clicked or the user scrolls to the top of the page.
+        if ( frb.clicked === false ) {
+            minimizeScrollFunction();
+        }
+        // Restore default state
+        if ( scrollPos === 0 ) {
+            $('.frb').addClass('frb--in-article');
+            $('.frb-prevent-page-jump').css('display', 'none');
+            frb.clicked = false;
+        }
+    });    
+
+    /* Hide banner outside of main namespace (and Main Page, for sites where that isn't in main namespace) */
+    if ( mw.config.get('wgNamespaceNumber') > 0 && !mw.config.get('wgIsMainPage') ) {
+        mw.centralNotice.bannerData.hideResult = true;
+        mw.centralNotice.bannerData.hideReason = 'namespace';
+    }
+    /* Hide banner on mobile site, in case wrong device settings were chosen */
+    if ( mw.config.get('skin') === 'minerva' ) {
+        mw.centralNotice.bannerData.hideResult = true;
+        mw.centralNotice.bannerData.hideReason = 'other';
+    }
+
+    if (!mw.centralNotice.bannerData.hideResult) {
+        frb.show();
+    }
+
+    mw.loader.using(['mediawiki.Uri']).then(function() {
+        var uri1 = new mw.Uri('https://donate.wikimedia.org/wiki/Special:FundraiserRedirector');
+        var uri2 = new mw.Uri('https://donate.wikimedia.org/wiki/Special:FundraiserRedirector');
+        uri1.extend({
+            uselang: 'en',
+            utm_medium: 'artsybanner',
+            utm_campaign: mw.centralNotice.data.campaign || 'test',
+            utm_source: mw.centralNotice.data.banner,
+            preSelect: '2.75'
+        });
+        uri2.extend({
+            uselang: 'en',
+            utm_medium: 'artsybanner',
+            utm_campaign: mw.centralNotice.data.campaign || 'test',
+            utm_source: mw.centralNotice.data.banner
+        });
+        $('.frb-button__icanhelp').attr('href', uri1.toString());
+        $('.frb-button__donatedifferent').attr('href', uri2.toString());
+    });
+
+});
+</script>
