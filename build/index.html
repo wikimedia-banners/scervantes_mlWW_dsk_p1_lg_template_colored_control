@@ -1,6 +1,6 @@
 <!-- Large desktop banner. Must be used with "Large banner limit and switch" mixin -->
 
- <!-- CREATED AT: 2019-08-26T20:28:51+00:00 -->
+ <!-- CREATED AT: 2019-08-26T20:29:59+00:00 -->
 
 <style>
 /* Hide when editing */
@@ -650,7 +650,7 @@ body.rtl .frb-close {
 
 
 
-/* Module: Viewport height on: Mon Aug 26 2019 20:28:51 GMT+0000 (UTC)*/
+/* Module: Viewport height on: Mon Aug 26 2019 20:29:59 GMT+0000 (UTC)*/
 @media (max-width: 1400px) and (max-height: 800px) {
     .frb-form .frb-methods {
         margin-top: 5px;
@@ -916,25 +916,25 @@ $(function() {
         frb.show();
     }
 
-    mw.loader.using(['mediawiki.Uri']).then(function() {
-        var uri1 = new mw.Uri('https://donate.wikimedia.org/wiki/Special:FundraiserRedirector');
-        var uri2 = new mw.Uri('https://donate.wikimedia.org/wiki/Special:FundraiserRedirector');
-        uri1.extend({
-            uselang: 'en',
-            utm_medium: 'artsybanner',
-            utm_campaign: mw.centralNotice.data.campaign || 'test',
-            utm_source: mw.centralNotice.data.banner,
-            preSelect: '2.75'
-        });
-        uri2.extend({
-            uselang: 'en',
-            utm_medium: 'artsybanner',
-            utm_campaign: mw.centralNotice.data.campaign || 'test',
-            utm_source: mw.centralNotice.data.banner
-        });
-        $('.frb-button__icanhelp').attr('href', uri1.toString());
-        $('.frb-button__donatedifferent').attr('href', uri2.toString());
-    });
+    // mw.loader.using(['mediawiki.Uri']).then(function() {
+    //     var uri1 = new mw.Uri('https://donate.wikimedia.org/wiki/Special:FundraiserRedirector');
+    //     var uri2 = new mw.Uri('https://donate.wikimedia.org/wiki/Special:FundraiserRedirector');
+    //     uri1.extend({
+    //         uselang: 'en',
+    //         utm_medium: 'artsybanner',
+    //         utm_campaign: mw.centralNotice.data.campaign || 'test',
+    //         utm_source: mw.centralNotice.data.banner,
+    //         preSelect: '2.75'
+    //     });
+    //     uri2.extend({
+    //         uselang: 'en',
+    //         utm_medium: 'artsybanner',
+    //         utm_campaign: mw.centralNotice.data.campaign || 'test',
+    //         utm_source: mw.centralNotice.data.banner
+    //     });
+    //     $('.frb-button__icanhelp').attr('href', uri1.toString());
+    //     $('.frb-button__donatedifferent').attr('href', uri2.toString());
+    // });
 
 });
 </script>
