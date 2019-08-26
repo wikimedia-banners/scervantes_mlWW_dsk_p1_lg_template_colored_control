@@ -876,25 +876,25 @@ $(function() {
         frb.show();
     }
 
-    mw.loader.using(['mediawiki.Uri']).then(function() {
-        var uri1 = new mw.Uri('https://donate.wikimedia.org/wiki/Special:FundraiserRedirector');
-        var uri2 = new mw.Uri('https://donate.wikimedia.org/wiki/Special:FundraiserRedirector');
-        uri1.extend({
-            uselang: 'en',
-            utm_medium: 'artsybanner',
-            utm_campaign: mw.centralNotice.data.campaign || 'test',
-            utm_source: mw.centralNotice.data.banner,
-            preSelect: '2.75'
-        });
-        uri2.extend({
-            uselang: 'en',
-            utm_medium: 'artsybanner',
-            utm_campaign: mw.centralNotice.data.campaign || 'test',
-            utm_source: mw.centralNotice.data.banner
-        });
-        $('.frb-button__icanhelp').attr('href', uri1.toString());
-        $('.frb-button__donatedifferent').attr('href', uri2.toString());
-    });
+    // mw.loader.using(['mediawiki.Uri']).then(function() {
+    //     var uri1 = new mw.Uri('https://donate.wikimedia.org/wiki/Special:FundraiserRedirector');
+    //     var uri2 = new mw.Uri('https://donate.wikimedia.org/wiki/Special:FundraiserRedirector');
+    //     uri1.extend({
+    //         uselang: 'en',
+    //         utm_medium: 'artsybanner',
+    //         utm_campaign: mw.centralNotice.data.campaign || 'test',
+    //         utm_source: mw.centralNotice.data.banner,
+    //         preSelect: '2.75'
+    //     });
+    //     uri2.extend({
+    //         uselang: 'en',
+    //         utm_medium: 'artsybanner',
+    //         utm_campaign: mw.centralNotice.data.campaign || 'test',
+    //         utm_source: mw.centralNotice.data.banner
+    //     });
+    //     $('.frb-button__icanhelp').attr('href', uri1.toString());
+    //     $('.frb-button__donatedifferent').attr('href', uri2.toString());
+    // });
 
 });
 </script>
