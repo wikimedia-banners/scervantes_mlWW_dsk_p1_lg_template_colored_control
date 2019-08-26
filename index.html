@@ -866,6 +866,12 @@ $(function() {
     frb.storedOptions = {};
     frb.extraData = {};
 
+    addOrnamentToTitle();
+
+    function addOrnamentToTitle() {
+        $('.frb-replace-countryname').after('<img class="frb-message__title-ornament" src="https://upload.wikimedia.org/wikipedia/donate/c/c1/Frb-stripe-ornament.jpg">');
+    }
+
     // Hide Banner when on click and enter when focused
     $('.frb-close').on('click keypress', function(e){
         if (e.which === 13 || e.type === 'click') {
