@@ -265,6 +265,16 @@ body.rtl .frb-close {
     display: inline-block;
     margin-right: 16px;
 }
+.frb-replace-countryname {
+    display: inline-block;
+    position: relative;
+}
+.frb-message__title-ornament {
+    position: absolute;
+    bottom: 5px;
+    right: 0;
+    width: 50px;
+}
 .frb-message__with-ornament {
     position: relative;
 }
@@ -873,6 +883,12 @@ $(function() {
             e.stopPropagation();
         }
     });
+
+    addOrnamentToTitle();
+
+    function addOrnamentToTitle() {
+        $('.frb-replace-countryname').append('<img class="frb-message__title-ornament" src="https://upload.wikimedia.org/wikipedia/donate/c/c1/Frb-stripe-ornament.jpg">');
+    }
 
 
     // On Load
