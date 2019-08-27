@@ -942,6 +942,8 @@ button.frb-nag-btn:hover {
 var frb = frb || {};
 
 frb.show = function() {
+    $('.frb-in-article').css('display', 'block');
+
     $('#siteNotice').prepend($('#centralNotice'));
     $('.frb').css('display', 'block');
     $('.frb').css('height', $('.frb').height );
@@ -950,7 +952,13 @@ frb.show = function() {
 frb.hide = function() {
     /* Hide the banner, and remove the extra space which was added for it */
     /* Don't set a cookie: this is a large banner and only shown on first view anyway */
+    // $('.frb').hide();
+    /* Hide the banner, and remove related event handlers */
+    /* Don't set a cookie: this is a large banner and only shown on first view anyway */
     $('.frb').hide();
+    $('.frb-prevent-page-jump').hide();
+    $(window).off('.frb');
+    $('#toc a').off('.frb');
 };
 
 
@@ -1074,6 +1082,9 @@ $(function() {
     // On Load
     var bannerOuterHeight = $('.frb-in-article').outerHeight( true );
     var stickyHeaderTop = bannerOuterHeight + $('.frb-in-article').offset().top + 200;
+    console.log(bannerOuterHeight)
+    console.log(stickyHeaderTop)
+
 
     frb.initNag = function() {
 
