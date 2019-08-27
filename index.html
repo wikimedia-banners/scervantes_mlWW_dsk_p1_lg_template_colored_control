@@ -447,6 +447,7 @@ body.rtl .frb-close {
     vertical-align: top;
     background: #fff;
 }
+
 .frb-nag {
     cursor: pointer;
     border: solid 6px #f13838;
@@ -600,6 +601,44 @@ button.frb-nag-btn:hover {
 .frb-rml-disabled .frb-rml-link,
 .frb-rml-disabled #nag-rml-btn {
     display: none;
+}
+
+
+/* --- Icon buttons --- */
+
+.frb .frb-icon-btn {
+    display: block;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: .55;
+}
+.frb .frb-icon-btn:hover {
+    opacity: 1;
+}
+
+.frb .frb-close {
+    position: absolute;
+    top: 0;
+    right: -12px;
+    width: 18px;
+    height: 18px;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 10 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%23000' fill='none' stroke-linecap='round'%3E%3Cpath d='M1 1 l8 8 M9 1 l-8 8'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+    background-size: 16px 16px;
+}
+body.rtl .frb .frb-close {
+    right: auto;
+    left: 0;
+}
+
+.frb .frb-back {
+    position: absolute;
+    top: 0;
+    left: -12px;
+    width: 20px;
+    height: 18px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 16'%3E%3Cg fill='none' fill-rule='evenodd' transform='translate(1 1)'%3E%3Cpath stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.778' d='M7.181 13.285L.753 7 7.181.715'%3E%3C/path%3E%3Crect fill='%23000' width='18.182' height='1.778' x='.818' y='6.111' rx='.889'%3E%3C/rect%3E%3C/g%3E%3C/svg%3E");
+    background-size: 20px 13px;
 }
 
 
