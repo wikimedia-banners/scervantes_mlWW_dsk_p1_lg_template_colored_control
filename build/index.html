@@ -1,6 +1,6 @@
 <!-- Large desktop banner. Must be used with "Large banner limit and switch" mixin -->
 
- <!-- CREATED AT: 2019-08-27T05:43:14+00:00 -->
+ <!-- CREATED AT: 2019-08-27T12:23:13+00:00 -->
 
 <style>
 /* Hide when editing */
@@ -428,6 +428,169 @@ body.rtl .frb-close {
     margin-top: 24px;
 }
 
+
+
+/* Nag style */
+
+.frb-nag {
+    cursor: pointer;
+}
+
+.frb-nag .frb-message {
+    vertical-align: middle;
+}
+
+.frb-nag .frb-message-inner {
+    padding: 12px 18px;
+    font-size: 14px;
+}
+
+@media (min-width: 1100px) {
+    .frb-nag .frb-message-inner {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .frb-nag .frb-message-inner {
+        padding: 16px 26px;
+        font-size: inherit;
+    }
+}
+
+.frb-nag .frb-form-wrapper {
+    padding: 0 16px;
+    width: 360px;
+    overflow: visible;
+    vertical-align: middle;
+}
+
+@media all and (min-width: 1200px) {
+    .frb-nag .frb-form-wrapper {
+        width: 440px;
+    }
+}
+
+.frb-nag-btns {
+    display: flex;
+}
+.frb.frb-rml-displayed .frb-nag-btns {
+    display: none;
+}
+button.frb-nag-btn {
+    flex: 1 0 0;
+    margin: 0 8px;
+    padding: 6px;
+    min-height: 48px;
+    background-color: white;
+    border: 1px solid #9aa0a7;
+    border-radius: 2px;
+    outline: 0;
+    color: #000;
+    cursor: pointer;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 1.3;
+    transition: all 100ms;
+}
+
+@media all and (min-width: 1100px) {
+    button.frb-nag-btn {
+        font-size: 14px;
+    }
+}
+
+@media all and (min-width: 1200px) {
+    button.frb-nag-btn {
+        font-size: 16px;
+    }
+}
+
+button.frb-nag-btn:hover {
+    -moz-transform: scale(1.043478);
+    -ms-transform: scale(1.043478);
+    -webkit-transform: scale(1.043478);
+    transform: scale(1.043478);
+}
+
+.frb-nag,
+.frb-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 16px;
+    background-color: #fff;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+
+/* --- Show and Hiding (Minimize and Maximize) --- */
+
+.frb-nag-btns {
+    display: flex;
+}
+
+.frb.frb-rml-displayed .frb-nag-btns {
+    display: none;
+}
+
+button.frb-nag-btn {
+    flex: 1 0 0;
+    margin: 0 8px;
+    padding: 6px;
+    min-height: 48px;
+    background-color: white;
+    border: 1px solid #9aa0a7;
+    border-radius: 2px;
+    outline: 0;
+    color: #000;
+    cursor: pointer;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 1.3;
+    transition: all 100ms;
+}
+
+@media all and (min-width: 1100px) {
+    button.frb-nag-btn {
+        font-size: 14px;
+    }
+}
+
+@media all and (min-width: 1200px) {
+    button.frb-nag-btn {
+        font-size: 16px;
+    }
+}
+
+button.frb-nag-btn:hover {
+    -moz-transform: scale(1.043478);
+    -ms-transform: scale(1.043478);
+    -webkit-transform: scale(1.043478);
+    transform: scale(1.043478);
+}
+
+#nag-yes-btn {
+    font-weight: bold;
+    background-color: #36c;
+    border: 1px solid #36c;
+    color: white;
+}
+
+/* --- Maybe later --- */
+
+.frb-rml-disabled .frb-rml,
+.frb-rml-disabled .frb-rml-link,
+.frb-rml-disabled #nag-rml-btn {
+    display: none;
+}
+
+
+/* Nag style */
+
+
+
 /* Responsive for minimized */
 @media (max-width: 1400px) and (max-height: 800px) {
     .frb-message, .frb-message__p { font-size: 15px; }
@@ -644,7 +807,7 @@ body.rtl .frb-close {
 
 
 
-/* Module: Viewport height on: Tue Aug 27 2019 05:43:14 GMT+0000 (UTC)*/
+/* Module: Viewport height on: Tue Aug 27 2019 12:23:13 GMT+0000 (UTC)*/
 @media (max-width: 1400px) and (max-height: 800px) {
     .frb-form .frb-methods {
         margin-top: 5px;
@@ -794,12 +957,10 @@ body.rtl .frb-close {
                     <img class="frb-message__bottom-right-ornament" src="https://upload.wikimedia.org/wikipedia/donate/5/5c/Frb-bottom-right-ornament.jpg">
                     
                     <div class="frb-message">
-                        <div class="frb-message-inner">
-                            <svg class="frb-message__info-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                <path fill="#F13838" fill-rule="nonzero" d="M11.813 0C5.288 0 0 5.29 0 11.813c0 6.523 5.29 11.812 11.813 11.812 6.523 0 11.812-5.29 11.812-11.813C23.625 5.29 18.335 0 11.812 0zm2.46 18.309c-.609.238-1.093.421-1.457.546a3.864 3.864 0 0 1-1.261.188c-.735 0-1.309-.18-1.72-.54-.405-.355-.608-.812-.608-1.366 0-.215.015-.434.046-.657.028-.226.079-.476.145-.761l.762-2.688c.066-.258.125-.5.172-.73.046-.23.066-.442.066-.633 0-.34-.07-.582-.211-.715-.145-.137-.414-.203-.812-.203a2.23 2.23 0 0 0-.606.09 9.443 9.443 0 0 0-.531.176l.203-.829c.496-.203.973-.374 1.43-.519a4.27 4.27 0 0 1 1.289-.219c.73 0 1.297.18 1.691.531.395.352.594.813.594 1.375 0 .118-.012.325-.04.618a4.225 4.225 0 0 1-.152.812l-.757 2.68c-.063.215-.118.46-.168.734a4.05 4.05 0 0 0-.07.625c0 .356.077.602.238.73.156.13.433.192.828.192.183 0 .39-.031.625-.094a3.59 3.59 0 0 0 .504-.172l-.2.829zm-.136-10.88a1.802 1.802 0 0 1-1.274.493c-.496 0-.925-.164-1.281-.492a1.563 1.563 0 0 1-.531-1.192c0-.465.18-.867.531-1.199a1.813 1.813 0 0 1 1.281-.496c.496 0 .922.164 1.274.496.355.332.531.734.531 1.2 0 .464-.176.863-.531 1.19z"></path>
-                            </svg>
-                            {{{FR2015_translations,if-everyone-thrive}}}
-                        </div>
+                        <svg class="frb-message__info-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="#F13838" fill-rule="nonzero" d="M11.813 0C5.288 0 0 5.29 0 11.813c0 6.523 5.29 11.812 11.813 11.812 6.523 0 11.812-5.29 11.812-11.813C23.625 5.29 18.335 0 11.812 0zm2.46 18.309c-.609.238-1.093.421-1.457.546a3.864 3.864 0 0 1-1.261.188c-.735 0-1.309-.18-1.72-.54-.405-.355-.608-.812-.608-1.366 0-.215.015-.434.046-.657.028-.226.079-.476.145-.761l.762-2.688c.066-.258.125-.5.172-.73.046-.23.066-.442.066-.633 0-.34-.07-.582-.211-.715-.145-.137-.414-.203-.812-.203a2.23 2.23 0 0 0-.606.09 9.443 9.443 0 0 0-.531.176l.203-.829c.496-.203.973-.374 1.43-.519a4.27 4.27 0 0 1 1.289-.219c.73 0 1.297.18 1.691.531.395.352.594.813.594 1.375 0 .118-.012.325-.04.618a4.225 4.225 0 0 1-.152.812l-.757 2.68c-.063.215-.118.46-.168.734a4.05 4.05 0 0 0-.07.625c0 .356.077.602.238.73.156.13.433.192.828.192.183 0 .39-.031.625-.094a3.59 3.59 0 0 0 .504-.172l-.2.829zm-.136-10.88a1.802 1.802 0 0 1-1.274.493c-.496 0-.925-.164-1.281-.492a1.563 1.563 0 0 1-.531-1.192c0-.465.18-.867.531-1.199a1.813 1.813 0 0 1 1.281-.496c.496 0 .922.164 1.274.496.355.332.531.734.531 1.2 0 .464-.176.863-.531 1.19z"></path>
+                        </svg>
+                        {{{FR2015_translations,if-everyone-thrive}}}
                     </div>
                     <div class="frb-form-wrapper">
                         <button class="frb-icon-btn frb-close" aria-label="{{{FR2015_translations,close}}}"></button>
@@ -920,32 +1081,131 @@ $(function() {
                 $('.frb-prevent-page-jump').show();
             }
 
-            $('.frb').addClass('frb--minimized');
-            $('.frb').removeClass('frb--in-article');
+            // $('.frb').addClass('frb--minimized');
+            // $('.frb').removeClass('frb--in-article');
         } else {
-            $('.frb').addClass('frb--in-article');
+            // $('.frb').addClass('frb--in-article');
             $('.frb-prevent-page-jump').css('display', 'none');
             $('.frb').removeClass('frb--minimized frb-rml-displayed');
         }
     }
 
-    var scrollPos;
-    frb.clicked = false;
+    // var scrollPos;
+    // frb.clicked = false;
 
-    $(window).on('load scroll resize', function() {
-        scrollPos = $(window).scrollTop();
+    // $(window).on('load scroll resize', function() {
+    //     scrollPos = $(window).scrollTop();
 
-        // Keep frb minimized until clicked or the user scrolls to the top of the page.
-        if ( frb.clicked === false ) {
-            minimizeScrollFunction();
+    //     // Keep frb minimized until clicked or the user scrolls to the top of the page.
+    //     if ( frb.clicked === false ) {
+    //         minimizeScrollFunction();
+    //     }
+    //     // Restore default state
+    //     if ( scrollPos === 0 ) {
+    //         $('.frb').addClass('frb--in-article');
+    //         $('.frb-prevent-page-jump').css('display', 'none');
+    //         frb.clicked = false;
+    //     }
+    // });
+
+
+    /* --- Nag/minimized banner functionality --- */
+
+    // On Load
+    var bannerOuterHeight = $('.frb-in-article').outerHeight( true );
+    var stickyHeaderTop = bannerOuterHeight + $('.frb-in-article').offset().top + 200;
+
+    frb.initNag = function() {
+
+        // Intercept TOC clicks, and account for nag height
+        $('#toc ul > li a').on('click.frb', function(e) {
+            e.preventDefault();
+
+            var anchor = $(this).attr('href').replace('#','');
+            anchor = $("[id='"+anchor+"']");
+
+            var offsetTop = anchor.offset().top - $('.frb-nag').outerHeight();
+            $('body, html').animate({ scrollTop: offsetTop }, 10);
+            window.location.hash = $(this).attr('href');
+        });
+
+        // Scroll to section, accounting for nag height
+        if ( window.location.hash ) {
+            var agent = navigator.userAgent;
+            var offsetTop;
+            var hash = decodeURI(window.location.hash).replace('#','');
+            hash = $("[id='"+hash+"']");
+
+            offsetTop = hash.offset().top + bannerOuterHeight - $('.frb-nag').outerHeight();
+            $('body, html').animate( { scrollTop: offsetTop }, 100 );
         }
-        // Restore default state
-        if ( scrollPos === 0 ) {
-            $('.frb').addClass('frb--in-article');
-            $('.frb-prevent-page-jump').css('display', 'none');
-            frb.clicked = false;
+
+        $(window).on('resize.frb', function() {
+            bannerOuterHeight = $('.frb-in-article').outerHeight( true );
+            stickyHeaderTop = bannerOuterHeight + $('.frb-in-article').offset().top + 200;
+        });
+
+        function scrollFunction() {
+            if( $(window).scrollTop() > stickyHeaderTop ) {
+                if ( !frb.fixed ) {
+                    $('.frb-nag').show();
+                    $('.frb-rml').appendTo('.frb-nag .frb-form-wrapper');
+                }
+            } else {
+                if ( frb.fixed ) {
+                    $('.frb-prevent-page-jump')
+                        .removeClass('frb-in-article')
+                        .hide();
+                    $('#frb-main')
+                        .removeClass('frb-fixed')
+                        .addClass('frb-in-article');
+                    $('.frb-rml').appendTo('#frb-main .frb-form-wrapper');
+                    frb.fixed = false;
+                } else {
+                    $('.frb-nag').hide();
+                    $('.frb-rml').appendTo('#frb-main .frb-form-wrapper');
+                }
+            }
         }
-    });    
+
+        $(window).on('load.frb scroll.frb resize.frb', function() {
+            scrollFunction();
+        });
+
+        frb.clickNag = function(e) {
+            // Add spacer to prevent jump
+            var inArticleHeight = $('#frb-main').outerHeight();
+            $('.frb-prevent-page-jump')
+                .height( inArticleHeight )
+                .addClass('frb-in-article') // So that it can be used for stickyHeader calcs
+                .show();
+
+            $('#frb-main')
+                .removeClass('frb-in-article')
+                .addClass('frb-fixed');
+
+            $('.frb-rml').appendTo('#frb-main .frb-form-wrapper')
+            $('.frb-nag').hide();
+
+            frb.fixed = true;
+            frb.extraData.clickedNag = 1;
+            return false;
+        };
+
+        $('.frb-nag').on( 'click', frb.clickNag );
+        $('#nag-yes-btn').on( 'click', frb.clickNag );
+
+        $('#nag-rml-btn').on( 'click', function(e) {
+            $('.frb-nag').addClass('frb-rml-displayed');
+            $('.frb-nag').off('click'); // Remove so they can interact with RML
+        });
+
+    };
+
+    $('.close-rml').on('click', function(e) {
+        $('.frb-nag').removeClass('frb-rml-displayed');
+    });
+
 
     /* Hide banner outside of main namespace (and Main Page, for sites where that isn't in main namespace) */
     if ( mw.config.get('wgNamespaceNumber') > 0 && !mw.config.get('wgIsMainPage') ) {
@@ -959,6 +1219,7 @@ $(function() {
     }
 
     if (!mw.centralNotice.bannerData.hideResult) {
+        frb.initNag();
         frb.show();
     }
 
